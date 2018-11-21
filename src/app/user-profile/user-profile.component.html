@@ -1,0 +1,221 @@
+<div id="main_container">
+    <div class="">
+      <nav class="navbar navbar-expand-lg fixed-top  navbar-light bg " id="Mynavbar">
+        <a class="navbar-brand"><i class="fas fa-luggage-cart"></i>BookMyRoom</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+          aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+          </ul>
+          <button class="button button2" class=" btn btn-md" routerLink='/Search'><i class="fa fa-search" aria-hidden="true"></i>&nbsp;Search</button>
+        </div>
+      </nav>
+    </div>
+    <br><br><br><br>
+  
+
+<div align="center">
+    <mat-card class="example-card" class="card" layout-align="center center">
+      <mat-card-header>
+      </mat-card-header>
+          <mat-tab-group> 
+              <!-- <mat-tab label="USER  PROFILE">
+                  <app-account></app-account>
+                </mat-tab> -->
+                <mat-tab label="USER  PROFILE">
+<!-- =======================START===============User Profile Tab's html is pasted here======================================================= -->
+
+
+
+<mat-grid-list cols="6" rowHeight="100px">
+    <!-- ------------------Grid Name Start---------------------------- -->
+    
+        <mat-grid-tile class="testing1"
+            [colspan]="2"
+            [rowspan]="1"> 
+            <form [formGroup]=nameForm>
+            <mat-form-field class="customText2">
+                <input matInput placeholder="Full Name" value="{{userDet.name}}" formControlName="fName">
+                <mat-error style="font-size:10px" *ngIf="(!nameForm.dirty)||(!nameForm.valid)">
+                        Full name is required and must contain only letters and should have minimum 5 characters !
+                </mat-error>
+            
+            </mat-form-field>
+            </form>
+        </mat-grid-tile>
+
+    <mat-grid-tile class="testing1"
+    [colspan]="1"
+    [rowspan]="1"> 
+    <form [formGroup]=nameForm>
+        <button mat-raised-button color="primary" (click)="editNameDetails(nameForm.value)" [disabled]="(!nameForm.valid)">Update Name</button>
+    </form>
+    </mat-grid-tile>
+
+        <!-- ------------------Grid Pic Start---------------------------- -->
+    <mat-grid-tile class="testing1"
+    [colspan]="3"
+    [rowspan]="4"> 
+    <mat-card class="example-card" class="Piccard" align="center">
+      <img mat-card-image height="100%" width="100%" class="userPhoto" src="{{userImage}}" alt="User Photo">
+      <mat-card-actions  align="center">
+      <input type="file" #Image accept="image/*" multiple  (change)="getFileDetails($event.target.files)"> 
+       <button type="submit" mat-raised-button color="primary" (click)=" uploadFiles()">Change Picture</button> 
+      </mat-card-actions>
+</mat-card> 
+    </mat-grid-tile>
+
+        <!-- ------------------Grid Phone Start---------------------------- -->
+
+        <mat-grid-tile class="testing1"
+            [colspan]="2"
+            [rowspan]="1"> 
+            <form [formGroup]=phoneForm>
+             <mat-form-field class="customText2">
+                    <input matInput type="tel" placeholder="Phone Number" value={{userDet.mobileNo}} formControlName="phNum">
+                    <mat-icon matSuffix>contact_phone</mat-icon>
+                    <mat-hint>Include area code</mat-hint>
+
+                    <mat-error *ngIf="(phoneForm.touched)&&(!phoneForm.valid)">
+                            Give a valid 10 digit mobile number !                            
+                    </mat-error>
+            </mat-form-field>
+        </form>
+        </mat-grid-tile>
+    
+    
+    
+        <mat-grid-tile class="testing1"
+            [colspan]="1"
+            [rowspan]="1">
+            <form [formGroup]=phoneForm>
+            <button mat-raised-button color="primary" (click)="editPhoneDetails(phoneForm.value)" [disabled]="!phoneForm.valid">Update Phone</button>
+            </form>
+        </mat-grid-tile>
+
+            <!-- ------------------Grid Password Start---------------------------- -->
+
+        <mat-grid-tile class="testing1"
+        [colspan]="1"
+        [rowspan]="1">
+        <form [formGroup]="authenticationForm">
+            <mat-form-field class="customText">
+              <input matInput [type]="hide1 ? 'text' : 'password'" placeholder="New password" formControlName="password" required>
+              
+              <mat-icon matSuffix (click)="hide1 = !hide1">
+                  {{hide1 ? 'visibility' : 'visibility_off'}}</mat-icon>
+              
+                  <mat-error *ngIf="!authenticationForm.controls['password'].pristine">
+                Please enter your new password
+              </mat-error>
+            </mat-form-field>
+        </form>
+        </mat-grid-tile>
+
+        <mat-grid-tile class="testing1"
+        [colspan]="1"
+        [rowspan]="1">
+        <form [formGroup]="authenticationForm">
+            <mat-form-field class="customText">
+              <input matInput [type]="hide2 ? 'text' : 'password'" placeholder="Confirm password" formControlName="confirmPassword" [errorStateMatcher]="matcher">
+              
+              <mat-icon matSuffix (click)="hide2 = !hide2">
+                  {{hide2 ? 'visibility' : 'visibility_off'}}</mat-icon>
+        
+                  <mat-error *ngIf="!authenticationForm.controls['confirmPassword'].validator">
+                Please validate both passwords
+              </mat-error>  
+            </mat-form-field>
+        </form>
+        </mat-grid-tile>
+
+
+        <mat-grid-tile class="testing1"
+        [colspan]="1"
+        [rowspan]="2"> 
+            <button mat-raised-button color="primary" type="button" (click)="editAuthenticationDetails(authenticationForm)" [disabled]="!(authenticationForm.valid&&verifyForm.valid)">
+             Update Password
+            </button>
+            <mat-error class="alert" *ngIf="!authenticationForm.controls['password'].pristine">
+                    <font size="2">Valid password needed!</font> <br> <li>Minimum 6 characters</li><li>Maximum 15 characters</li><li>Atleast 1 special character</li><li> Atleast 1 Digit</li>        
+            </mat-error>            
+        </mat-grid-tile>
+        
+        <mat-grid-tile class="testing1"
+        [colspan]="2"
+        [rowspan]="1"> 
+        <form [formGroup]="verifyForm">
+            <mat-form-field class="customText2">
+                <input matInput [type]="hide3 ? 'text' : 'password'" placeholder="Current Password" formControlName="verifyPassword" required>
+              
+                <mat-icon matSuffix (click)="hide3 = !hide3">
+                    {{hide3 ? 'visibility' : 'visibility_off'}}</mat-icon>
+        
+              <mat-error *ngIf="!verifyForm.controls['verifyPassword'].valid">
+        
+                Please enter your current password.
+              </mat-error>  
+            </mat-form-field>
+        </form>
+        </mat-grid-tile>
+
+</mat-grid-list>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ===========================END================User Profile Tab's html is pasted here===================================================== -->
+
+
+
+
+              </mat-tab>
+              <!-- <mat-tab label="Payment Options">payment coming soon</mat-tab>
+              <mat-tab label="Watchlist"> coming soon</mat-tab>
+              <mat-tab label="Recommend"> Recommend a friend </mat-tab> -->
+            </mat-tab-group>
+    </mat-card>
+    </div>
+    
+    <div style="margin-top:100px;">
+        <nav class="navbar navbar-expand-lg  navbar-light" id="bot-nav">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+              <li class="nav-item active">
+                <a class="nav-link" href="http://www.twitter.com"><i class="fab fa-twitter-square"></i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="http://www.facebook.com"><i class="fab fa-facebook"></i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="http://www.instagram.com"><i class="fab fa-instagram"></i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="http://www.google.com"><i class="fab fa-google-plus-square"></i></a>
+              </li>
+            </ul>
+            <ul class="navbar-nav mr-auto mt-3 mt-lg-0">
+              &#169; 2018 BookMyRoom
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+    
+    

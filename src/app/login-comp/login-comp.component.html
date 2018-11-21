@@ -1,0 +1,16 @@
+<form #loginForm="ngForm" class="col s12 white">
+  <div class="form-group">
+    <label for="username">UserName</label>
+    <input type="text" class="form-control" name="UserName" placeholder="Enter UserName" #UserName="ngModel" ngModel required/>
+    <small id="usernameHelp" class="form-text text-muted">We'll never share your details with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" name="Password" placeholder="Password" #Password="ngModel" ngModel required />
+  </div>
+  <button [disabled]="!loginForm.valid" autofocus type="button" class="btn btn-outline-success" type="button" (click)="OnSubmit(loginForm)">Login  <i class="far fa-paper-plane"></i></button>
+<!--================================FORGOT PASSWORD==============================================-->
+<a (click)="ForgotPassword()" >Forgot Password? </a>
+<!--================================FORGOT PASSWORD==============================================-->
+
+</form>

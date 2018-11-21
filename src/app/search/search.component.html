@@ -1,0 +1,158 @@
+
+<div id="main_container">
+  <!--=========================Start of Top Navbar===============================-->
+  <div class="head">
+    <nav class="navbar navbar-expand-lg fixed-top  navbar-light bg " id="Mynavbar">
+      <a id="bottom-nav" class="navbar-brand"><i class="fas fa-luggage-cart"></i>BookMyRoom</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a id="bottom-nav" class="nav-link" routerLink="/Home">Home<span class="sr-only"></span></a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0" id="hello">
+          Hello, {{name}}! &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;
+          <!--===========================================DROPDOWN=====================================================-->
+          <div *ngIf="socialprofile;else ElseBlock"> 
+            <div class="dropdown">
+                  <button class="btn btn-outline-dark my-2 my-sm-0 dropdown-toggle" type="button" id="UserAccount" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)= "CheckUser()" >
+                  <i class="far fa-user"></i>  Account
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="UserAccount">
+                      <button class="dropdown-item" routerLink='/favlist'><i class="far fa-heart"></i>    Favourites</button>
+                      <button class="dropdown-item" routerLink='/previous'><i class="fas fa-history"></i>    Booking History</button>
+                      <button class="dropdown-item" routerLink='/userProfile'><i class="far fa-user-circle"></i>    Profile</button>
+                      <button class="dropdown-item"(click)="Logout()"><i class="far fa-user"></i>    Logout</button>
+                  </div>
+                </div>
+            </div>
+            <ng-template #ElseBlock>
+                <div class="dropdown">
+                    <button class="btn btn-outline-dark my-2 my-sm-0 dropdown-toggle" type="button" id="UserAccount" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)= "CheckUser()">
+                    <i class="far fa-user"></i>  Account
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="UserAccount">
+                        <button class="dropdown-item" routerLink='/favlist'><i class="far fa-heart"></i>    Favourites</button>
+                        <button class="dropdown-item" routerLink='/previous'><i class="fas fa-history"></i>    Booking History</button>
+                       
+                        <button class="dropdown-item"(click)="Logout()"><i class="far fa-user"></i>    Logout</button>
+                    </div>
+                  </div>
+            </ng-template>
+
+          <!--===========================================DROPDOWN=====================================================-->&nbsp; &nbsp;
+        </form>
+      </div>
+    </nav>
+  </div>
+  <!--=========================End of Top Navbar===============================-->
+  <br>
+  <br>
+  <!--========================Start of Search Tile=============================-->
+  <div id="searchf">
+    <div id="amenities">
+      <div class="row">
+        <div class="col-md-6 mb-2">
+          <h6><b>Features in BookMyRoom</b></h6>
+        </div>
+        <div class="col-md-6 mb-2 " id="amen">
+          <i class="fas fa-asterisk"></i>
+          <i style="  padding-left: 70px;" class="fas fa-wifi"></i>
+          <i style="  padding-left: 60px;" class="fas fa-tv"></i>
+          <i style="  padding-left: 55px;" class="fas fa-bed"></i>
+          <i style="  padding-left: 60px;" class="fas fa-shower"></i>
+          <i style="  padding-left: 80px;" class="fas fa-broom"></i>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-2"></div>
+        <div class="col-md-6 mb-2" id="text-icons">
+          <label><b>AC Rooms</b></label>
+          <label style="padding-left:40px;"><b>Wi-Fi</b></label>
+          <label style="padding-left:60px;"><b>TV</b></label>
+          <label style="padding-left:60px;"><b>Bed</b></label>
+          <label style="padding-left:35px;"><b>Clean Washrooms</b></label>
+          <label style="padding-left:25px;"><b>Hygenic</b></label>
+        </div>
+      </div>
+    </div>
+    <form #form="ngForm">
+      <div class="form-row">
+        <div class="col-md-3 mb-4">
+          <label>Location</label>
+          <select class="custom-select" placeholder="Select a City" name=hotelCity #hotelCity="ngModel" [(ngModel)]="searchfilter.hotelCity">
+                <option id="drop" *ngFor="let city of cityoptions" [value]="city">{{city}}</option>
+                <!-- <option id="drop" value="Mumbai">Mumbai</option>
+                <option id="drop" value="Delhi">Delhi</option>
+                <option id="drop" value="Bangalore">Bangalore</option>
+                <option id="drop" value="Chennai">Chennai</option>
+                <option id="drop"value="Kolkata">Kolkata</option> -->
+              </select>
+        </div>
+        <div class="col-md-3 mb-4">
+          <div class="col-10">
+            <label>Check-In</label>
+            <input class="form-control" [min]='todayDate' [max]="maxDate"  id="hotelFromDate" #CheckIn="ngModel" [(ngModel)]="searchfilter.hotelFromDate" name="hotelFromDate"
+              type="date" required>
+              
+          </div>
+        </div>
+        <div class="col-md-3 mb-4">
+          <div class="col-10">
+            <label>Check-Out</label>
+            <input class="form-control" [min]='tomorrowDate' [max]="maxDate" id="hotelToDate" #hotelToDate="ngModel" [(ngModel)]="searchfilter.hotelToDate" name="hotelToDate"
+              type="date">
+          </div>
+        </div>
+        <div class="col-md-3 mb-4">
+          <label>Room Preference</label>
+          <select class="custom-select" name="hotelRoomType" #hotelRoomType="ngModel" [(ngModel)]="searchfilter.hotelRoomType">
+            <option id="drop" value="Single">Single-AC</option>
+            <option  id="drop" value="Double">Double-AC</option>
+        </select>
+        </div>
+      </div>
+      <button class="btn btn-warning" type="button" name="Search" (click)=show(form)><b>Find Hotels!</b></button>
+    </form>
+ 
+    
+  </div>
+  <!--=============================End of Search Tile============================================================-->
+  <!--=============================== Start of SearchCards====================================================-->
+  <app-card [hotelInfo]="searchData"></app-card>
+
+  <!--=============================== End of SearchCards====================================================-->
+  <!--=============================== Start of bottom nav-bar====================================================-->
+  <div style="margin-top:100px;">
+    <nav class="navbar navbar-expand-lg  navbar-light" id="bot-nav">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href='http://www.twitter.com'><i class="fab fa-twitter-square"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href='http://facebook.com'><i class="fab fa-facebook"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href='http://www.instagram.com'><i class="fab fa-instagram"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href='http://www.google.com'><i class="fab fa-google-plus-square"></i></a>
+          </li>
+        </ul>
+        <ul class="navbar-nav mr-auto mt-3 mt-lg-0">
+          &#169; 2018 BookMyRoom
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <!--=============================== End of bottom nav-bar====================================================-->
+</div>

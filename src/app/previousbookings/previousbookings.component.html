@@ -1,0 +1,91 @@
+<div id="main_container">
+  <div class="">
+    <nav class="navbar navbar-expand-lg fixed-top  navbar-light bg " id="Mynavbar">
+      <a class="navbar-brand"><i class="fas fa-luggage-cart"></i>BookMyRoom</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+      
+        <button class="btn btn-warning" routerLink='/Search'><i class="fa fa-search" aria-hidden="true"></i>&nbsp;Go to Search</button>&nbsp;&nbsp;
+        <button class="btn btn-outline-dark my-2 my-sm-0" routerLink='/'><i class="far fa-user"></i>&nbsp;Logout</button>
+      </div>
+    </nav>
+  </div>
+  <br><br><br><br>
+
+  
+<div class="wrapper">
+  <h2><b> BOOKING HISTORY </b></h2>
+</div>
+<div class="opaque">
+  <table class="table table-bordered table-hover" id=abc *ngIf="Disable==true">
+    <thead class="thead-dark">
+    <th>HOTEL</th>
+    <th>CHECK-IN DATE</th>
+    <th>CHECK-OUT DATE</th>
+    <th>BOOKING DATE</th>
+    <th>CANCEL BOOKING</th>
+    </thead>
+    <tr *ngFor="let data of historyData">
+      <td><strong>{{data.hotelName}}</strong></td>
+      <td><strong>{{data.checkInDate.split("T")[0]}}</strong></td>
+      <td><strong>{{data.checkOutDate.split("T")[0]}}</strong></td>
+      <td><strong>{{data.bookingDate.toString().split("T")[0]}}</strong></td>
+      <td style="text-align: center" *ngIf="data.checkInDate.split('-')[1]>=month && data.checkInDate.split('-')[2].split('T')[0]>date">
+        <button type="button" class="btn btn-danger"  name="submit" (click)="clear(data.bookingId)">Cancel Booking</button>
+      </td> 
+      <td style="text-align: center" *ngIf="data.checkInDate.split('-')[1]>=month && data.checkInDate.split('-')[2].split('T')[0]<=date">
+        <button type="button" class="btn btn-success" name="submit" (click)="onReview(data.hotelId)">Write a Review</button>
+      </td>
+    </tr>
+  </table>
+</div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div style="margin-top:100px;">
+    <nav class="navbar navbar-expand-lg  navbar-light" id="bot-nav">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="http://www.twitter.com"><i class="fab fa-twitter-square"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="http://www.facebook.com"><i class="fab fa-facebook"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="http://www.instagram.com"><i class="fab fa-instagram"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="http://www.google.com"><i class="fab fa-google-plus-square"></i></a>
+          </li>
+        </ul>
+        <ul class="navbar-nav mr-auto mt-3 mt-lg-0">
+          &#169; 2018 BookMyRoom
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+

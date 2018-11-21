@@ -1,0 +1,112 @@
+<html>
+<!--================================Start of Top nav bar==============================================-->
+<div class="">
+  <nav class="navbar navbar-expand-lg fixed-top  navbar-light bg " id="Mynavbar">
+    <a class="navbar-brand"><i class="fas fa-luggage-cart"></i>BookMyRoom</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+      </ul>
+    </div>
+  </nav>
+</div>
+<!--================================End of top nav bar==============================================-->
+<div class="full">
+  <h1>CONFIRM BOOKING</h1>
+  <form class="form-c" name="form" #form="ngForm">
+    <div id="cardcolor">
+      <div class="confirm-table ">
+        <table class="table table-striped table-bordered " align="center">
+          <thead class="thead-dark">
+            <tr height="90" style="align-content: center">
+              <th colspan="2">
+                <h2 style="text-align: center">Booking Details</h2>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+
+              <td>Check In<br> {{booking.checkInDate|date}}</td>
+              <td>Check Out <br>{{booking.checkOutDate|date}}</td>
+
+            </tr>
+            <tr>
+              <td>Number of Guests</td>
+              <td>
+                <select id="Id" #Id="ngModel" class="hideLabel form-control" [(ngModel)]="nameId" name="Id" (change)=" GuestAddition()"> 
+          
+            <option  value="1">1 </option><option value="2">2 </option>
+
+        </select>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                Discount : {{booking.discountAmount|currency:'INR':true}}
+
+              </td>
+
+
+              <td>
+                Total Amount : {{booking.bookingAmount|currency:'INR':true}}
+              </td>
+
+
+            </tr>
+          
+
+            <tr>
+              <td>Reward Points:{{RewardPoints}}</td>
+              <td>
+                <button [disabled]="!UserewardsDiscount" type="submit" (click)="UseRewards()" class="btn btn-primary" style="text-align: center">Use RewardPoints</button>
+                <button [disabled]="!disableRewards"type="submit" (click)="NotUseRewards()" class="btn btn-warning" style="text-align: center; float:right;">Revert</button>      
+              </td>
+          
+            </tr>
+            <tr>
+              <td colspan="2" style="padding-left: 40%">
+                <button type="button" [disabled]="!bookingbutton" (click)="confirm()" class="btn btn-success" style="text-align: center">Confirm Booking</button>
+                <button class="btn btn-danger" routerLink="/Search"style="float:right;">Cancel</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </form>
+</div>
+<!--=============================== Start of bottom nav-bar====================================================-->
+<div style="margin-top:100px;">
+  <nav class="navbar navbar-expand-lg  navbar-light" id="bot-nav">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
+      aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+              <a class="nav-link" href="http://www.twitter.com"><i class="fab fa-twitter-square"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://www.facebook.com"><i class="fab fa-facebook"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://www.instagram.com"><i class="fab fa-instagram"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://www.google.com"><i class="fab fa-google-plus-square"></i></a>
+            </li>
+      </ul>
+      <ul class="navbar-nav mr-auto mt-3 mt-lg-0">
+        &#169; 2018 BookMyRoom
+      </ul>
+    </div>
+  </nav>
+</div>
+<!--=============================== End of bottom nav-bar====================================================-->
+
+</html>

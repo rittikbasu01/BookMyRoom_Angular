@@ -1,0 +1,90 @@
+<div id="main_container">
+  <!--================================Start of Top nav bar==============================================-->
+  <div class="">
+    <nav class="navbar navbar-expand-lg fixed-top  navbar-light bg " id="Mynavbar">
+      <a class="navbar-brand"><i class="fas fa-luggage-cart"></i>BookMyRoom</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          Hello, {{name}}! &nbsp; &nbsp; 
+          <!--===========================================DROPDOWN=====================================================-->
+          <div *ngIf="socialprofile;else ElseBlock"> 
+            <div class="dropdown">
+                  <button class="btn btn-outline-dark my-2 my-sm-0 dropdown-toggle" type="button" id="UserAccount" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)= "CheckUser()">
+                  <i class="far fa-user"></i>  Account
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="UserAccount">
+                      <button class="dropdown-item" (click)="GoFav()"><i class="far fa-heart"></i>    Favourites</button>
+                      <button class="dropdown-item" (click)="HistoryList()"><i class="fas fa-history"></i>    Booking History</button>
+                      <button class="dropdown-item" (click)="Profile()"><i class="far fa-user-circle"></i>    Profile</button>
+                      <button class="dropdown-item"(click)="Logout()"><i class="far fa-user"></i>    Logout</button>
+                  </div>
+                </div>
+            </div>
+            <ng-template #ElseBlock>
+                <div class="dropdown">
+                    <button class="btn btn-outline-dark my-2 my-sm-0 dropdown-toggle" type="button" id="UserAccount" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)= "CheckUser()">
+                    <i class="far fa-user"></i>  Account
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="UserAccount">
+                        <button class="dropdown-item" (click)="GoFav()"><i class="far fa-heart"></i>    Favourites</button>
+                        <button class="dropdown-item" (click)="HistoryList()"><i class="fas fa-history"></i>    Booking History</button>
+                       
+                        <button class="dropdown-item"(click)="Logout()"><i class="far fa-user"></i>    Logout</button>
+                    </div>
+                  </div>
+            </ng-template>
+            <!--===========================================DROPDOWN=====================================================-->
+            </form>
+      </div>
+    </nav>
+  </div>
+   <!--================================End of top nav bar==============================================-->
+   <br/>
+   <!--=============================== Start of Home div====================================================-->
+    <div class="home">
+        <br><br>
+      <h2>Are you looking for a room to stay?! We'll do it for you! Go ahead and enter your search criteria! and don't forget to use your reward points!
+        <br><br>
+        <button mat-raised-button (click)="go()">Search for your Room <i class="fas fa-search fa-2x"></i></button>
+        <br><br>
+        PS: Please provide a Review after you enjoy your stay!
+      </h2>
+      <br><br>      
+    </div>
+   <!--=============================== End of Home div====================================================-->
+
+   <!--=============================== Start of bottom nav-bar====================================================-->
+  <div style="margin-top:100px;">
+    <nav class="navbar navbar-expand-lg  navbar-light" id="bot-nav">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="http://www.twitter.com"><i class="fab fa-twitter-square"></i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="http://www.facebook.com"><i class="fab fa-facebook"></i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="http://www.instagram.com"><i class="fab fa-instagram"></i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="http://www.google.com"><i class="fab fa-google-plus-square"></i></a>
+              </li>
+        </ul>
+        <ul class="navbar-nav mr-auto mt-3 mt-lg-0">
+          &#169; 2018 BookMyRoom
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <!--=============================== End of bottom nav-bar====================================================-->
+</div>

@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+#main_container{
+    background-image: 'assets/Dashboard/room10.jpg' ;
+    height:auto; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding:90px;
+    background-attachment: fixed;
+
+}
+.bg {
+    background-color: #E0393B;
+}
+#Fo{
+
+    font: Merriweather Sans;
+}
+
+ #Mynavbar{
+padding-left:0px;
+}
+
+#bot-nav
+{
+    background-color: #E0393B;
+    color:white;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Roboto', sans-serif; }

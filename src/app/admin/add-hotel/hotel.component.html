@@ -1,0 +1,132 @@
+<br><br><br>
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <!-- =====================First Stepper======================== -->
+
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Choose a City</ng-template>
+      <!-- <form class="example-form"> -->
+        <!-- City Selecter -->
+          <mat-form-field>
+              <mat-select placeholder="Select a City"   name="citySelect" [(ngModel)]="citySelect" formControlName="citySelect" required>
+                <mat-option><b>Cities:</b></mat-option>
+                <mat-option *ngFor="let city of cityoptions" [value]="city">{{city}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <!-- Dialog to add to the city array -->
+          <button mat-mini-fab color="primary" (click)="cityDialog()">
+            <mat-icon>add</mat-icon>
+          </button>
+
+              <br>
+              <br>
+
+      <div>
+        <button mat-button matStepperNext >Next</button>
+      </div>
+    </form>
+
+  </mat-step>
+<!-- =====================Second Stepper======================== -->
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Hotel Details</ng-template>
+
+          <!-- City Selecter -->
+            <mat-form-field>
+                <mat-select placeholder="Select a Hotel Name" [(ngModel)]="hotelName" formControlName="hotelName" required>
+                  <mat-option><b>Hotels:</b></mat-option>
+                  <mat-option *ngFor="let hotelNames of hotelNameOptions" [value]="hotelNames">{{hotelNames}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <!-- Dialog to add to the city array -->
+            <button mat-mini-fab color="primary" (click)="hotelNameDialog()">
+              <mat-icon>add</mat-icon>
+            </button>
+                         
+            <br><br>
+            <!-- Rating Selector -->
+
+            <mat-form-field>
+                <mat-select placeholder="Hotel Rating" [(ngModel)]="hotelStar" formControlName="hotelStar" required>
+                  <mat-option><b>Rating:</b></mat-option>
+                  <mat-option *ngFor="let rating of hotelRatingOptions" [value]="rating">{{rating}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <br><br>
+
+              <mat-form-field class="example-form-field">
+                  <input matInput type="text" placeholder="Hotel Address" [(ngModel)]="hotelAddressValue" formControlName="hotelAddressValue" required>
+              </mat-form-field>
+
+              
+                
+              
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <!-- =====================Third Stepper======================== -->
+
+  <mat-step [stepControl]="thirdFormGroup">
+      <form [formGroup]="thirdFormGroup">
+        <ng-template matStepLabel>Room Details</ng-template>
+
+        <mat-card>Must select at least 1 room with it's price to add Hotels.</mat-card>
+        <!-- ============================================== -->
+        <label>Single AC Rooms: </label>
+        <button (click)="subtractSingleAcCount()">-</button>
+        &nbsp;
+        {{singleAcCount}}
+        &nbsp;
+        <button (click)="addSingleAcCount()">+</button>
+        <br>
+
+        <mat-form-field class="example-form-field">
+            <input matInput type="number" placeholder="Room Price" [(ngModel)]="singleAcPrice" formControlName="singleAcPrice" [required]="(singleAcCount>0)">
+        </mat-form-field>
+
+        <br>
+        <mat-divider></mat-divider>
+        <br>
+        <label>Double AC Rooms: </label>
+        <button (click)="subtractSingleNonAcCount()">-</button>
+        {{singleNonAcCount}}
+        <button (click)="addSingleNonAcCount()">+</button>
+        <br>
+        <mat-form-field class="example-form-field">
+            <input matInput type="number" placeholder="Room Price" [(ngModel)]="singleNonAcPrice" formControlName="singleNonAcPrice" [required]="singleNonAcCount>0">
+        </mat-form-field>
+
+         <br><br><br>
+
+        <!-- ========================================= -->
+
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button *ngIf="(singleNonAcCount+singleAcCount)>0" matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <!-- =====================Fourth Stepper======================== -->
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <h5 align="left">This is the information you have provided:</h5>
+      <p align="left">
+      <li>Hotel City:{{citySelect}}</li>
+      <li>Hotel Name: {{hotelName}}</li>
+      <li>Hotel Rating: {{hotelStar}}</li>
+      <li>Hotel Address: {{hotelAddressValue}}</li>
+      <li>Single AC Rooms: {{singleAcCount}}--{{singleAcPrice|currency: 'INR':true}}</li>
+      <li> AC Rooms: {{singleNonAcCount}}--{{singleNonAcPrice|currency: 'INR':true}}</li>
+      </p> 
+      <div align="left">
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button [disabled]="(this.singleAcCount+this.singleNonAcCount)<1"(click)="submitNewHotel(firstFormGroup.value,secondFormGroup.value,thirdFormGroup.value)">Submit</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+      </mat-step>
+</mat-horizontal-stepper> 

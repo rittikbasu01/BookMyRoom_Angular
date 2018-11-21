@@ -1,0 +1,105 @@
+<html>
+  <br><br><br><br><br><br>
+  <div class="container">
+      <div id="accordion" role="tablist">
+          <div class="card">
+            <div class="card-header" role="tab" id="headingOne">
+              <h5 class="mb-0">
+                <a data-toggle="collapse" href="#creditCard" aria-expanded="true" aria-controls="collapseOne" (onclick)='resetCreditForm(CreditCardForm)'>
+                 Credit Card
+                </a>
+              </h5>
+            </div>
+            <div id="creditCard" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+              <div class="card-body"> <!--=============================Credit Card Form=====================================================-->
+                  <form name="creditCard" #CreditCardForm="ngForm" novalidate (ngSubmit)="CreditCardForm.form.valid && onSubmitCredit(CreditCardForm);  ">
+                      <div class="form-group">
+                        <input type="text" class="form-control" name="CreditNumber" placeholder="Card Number" #CreditNumber="ngModel" ngModel
+                          [ngClass]="{'is-invalid':CreditCardForm.submitted &&  CreditNumber.invalid}" [pattern]="CreditCardNumberPattern" maxlength="16"
+                          required />
+                        <div class="invalid-feedback">
+                          <div>Card Number is required and must contain only numbers!</div>
+                        </div>
+                      </div>
+                      <br><br>
+                      <div class="row">
+                        <div class="form-group">
+                          <div class="col">
+                            <label>Expiry Date: </label>
+                            <input type="month" class="form-control" name="ExpiryDateCredit" #ExpiryDateCredit="ngModel" ngModel [ngClass]="{'is-invalid':CreditCardForm.submitted && ExpiryDateCredit.invalid}"
+                              min="2018-10" max="2024-04" onkeydown="return false" required />
+                            <div class="invalid-feedback">
+                              <div>Expiry Date required!</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col">
+                            <label>CVV: </label>
+                            <input type="password" maxlength="3" class="form-control" name="CvvCredit" #CvvCredit="ngModel" ngModel [ngClass]="{'is-invalid':CreditCardForm.submitted && CvvCredit.invalid}"
+                              [pattern]="CvvPattern" style="width:30%;" required />
+                            <div class="invalid-feedback">
+                              <div>Cvv is required and must contain only numbers!</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <br>
+                      <button type="submit" class="btn btn-primary">PAY Now</button>
+                      <br><br>
+                    </form><!--=============================Credit Card Form=====================================================-->
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" role="tab" id="headingTwo">
+              <h5 class="mb-0">
+                <a class="collapsed" data-toggle="collapse" href="#debitCard" aria-expanded="false" aria-controls="collapseTwo" (onclick)='resetDebitForm(DebitCardForm)'>
+               Debit Card
+                </a>
+              </h5>
+            </div>
+            <div id="debitCard" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+              <div class="card-body"><!--=============================Debit Card Form=====================================================-->
+                <form name="debitCard" #DebitCardForm="ngForm" novalidate (ngSubmit)="DebitCardForm.form.valid && onSubmitDebit(DebitCardForm)">
+                    <div class="form-group">
+                      <input type="text" class="form-control" name="DebitNumber" placeholder="Debit Card Number" #DebitNumber="ngModel" ngModel
+                        [ngClass]="{'is-invalid':DebitCardForm.submitted &&  DebitNumber.invalid}" [pattern]="CreditCardNumberPattern" maxlength="16"
+                        required />
+                      <div class="invalid-feedback">
+                        <div>Card Number is required and must contain only numbers!</div>
+                      </div>
+                    </div>
+                    <br><br>
+                    <div class="row">
+                      <div class="form-group">
+                        <div class="col">
+                          <label>Expiry Date: </label>
+                          <input type="month" class="form-control" name="ExpiryDateDebit" #ExpiryDateDebit="ngModel" ngModel [ngClass]="{'is-invalid':DebitCardForm.submitted && ExpiryDateDebit.invalid}"
+                            min="2018-10" max="2024-04"  onkeydown="return false" required />
+                          <div class="invalid-feedback">
+                            <div>Expiry Date required!</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="col">
+                          <label>CVV: </label>
+                          <input type="password" maxlength="3" class="form-control" name="CvvDebit" #CvvDebit="ngModel" ngModel [ngClass]="{'is-invalid':DebitCardForm.submitted && CvvDebit.invalid}"
+                            [pattern]="CvvPattern" style="width:30%;" required />
+                          <div class="invalid-feedback">
+                            <div>CVV is required and must contain only numbers!</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <br><br>
+                    <button type="submit" class="btn btn-primary">PAY Now</button>
+                    <br><br>
+                  </form><!--=============================Debit Card Form=====================================================-->
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
+</html>

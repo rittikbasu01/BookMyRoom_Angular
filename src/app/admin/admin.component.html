@@ -1,0 +1,16 @@
+
+
+<mat-card class="example-card">
+
+  <mat-card-actions align="end">
+      <button  class="mat-button"mat-raised-button color="primary" (click)="Logout()"><i class="fas fa-sign-out-alt"></i>LogOut</button> 
+  </mat-card-actions>
+  <mat-card-content>
+      <mat-tab-group>
+          <mat-tab label="Add Hotel"> <app-hotel></app-hotel> </mat-tab>
+          <mat-tab label="Manage Hotel"><app-manage-hotel></app-manage-hotel> </mat-tab>
+          <mat-tab label="Manage User"> <app-manage-user></app-manage-user> </mat-tab>
+          <mat-tab label="Manage Booking"> <app-manage-booking></app-manage-booking> </mat-tab>
+        </mat-tab-group>
+  </mat-card-content>
+</mat-card>

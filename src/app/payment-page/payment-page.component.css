@@ -1,0 +1,23 @@
+.container
+{
+    background-color: rgba(255, 255, 255, 0.65);
+    padding: 100px;
+}
+button{
+    float:right;
+}
+row{
+    text-align: center;
+}
+col
+{
+    text-align: center;
+}
+html
+{
+     background-image: url('/assets/Dashboard/Payment02.png');
+}
+body
+{
+    padding: 2rem 1rem;
+}

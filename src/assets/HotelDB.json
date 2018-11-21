@@ -1,0 +1,20 @@
+[
+    
+    {"id":1,"title": "Goa Marriott Resort & Spa","star":4, "location": "Miramar, Panaji, Goa 403001","Price":"200","Amenities":"Spa/Swimming Pool",
+    "description":"located strategically in Goa to offer you the best services and comfort at affordable rates",
+    "pic1":"/assets/HotelPic/Hotel1.jpg", "pic2":"/assets/HotelPic/Hotel2.jpg","pic3":"/assets/HotelPic/Hotel3.jpg"
+  },
+ 
+    { "id":2,"title": "Golden Tulip Goa","star":3,"location":"Baga,Calangute,Bardez","Price":"300","Amenities":"Wifi/Breakfast",
+  "description":"Golden Tulip Goa promises a great experience to the guests at affordable rates.",
+  "pic1":"/assets/HotelPic/Hotel4.jpg", "pic2":"/assets/HotelPic/Hotel5.jpg","pic3":"/assets/HotelPic/Hotel6.jpg"},
+
+    {"id":3, "title": "Keys Select Ronil Resort","star":5,"location":"Gaura Vaddo, Calangute, Bardez-Goa 403515","Price":"600","Amenities":"Parking",
+  "description":"Ideal choice of stay for business and leisure travelers, offering fine services at budget rates.",
+  "pic1":"/assets/HotelPic/Hotel7.jpg", "pic2":"/assets/HotelPic/Hotel8.jpg","pic3":"/assets/HotelPic/Hotel9.jpg"},
+
+    { "id":4,"title": "San Joao Holiday Home", "star":2,"location":"Near Holy Trinity Church, Mazilvaddo, Benaulim, Salcete, South Goa","Price":900,"Amenities":"Shuttle",
+  "description":"With its easy accessibility to many key attractions, we offer you the best services, experience and comfort at affordable rates",
+  "pic1":"/assets/HotelPic/Hotel10.jpg", "pic2":"/assets/HotelPic/Hotel11.jpg","pic3":"/assets/HotelPic/Hotel12.jpg"}
+  
+  ] 
